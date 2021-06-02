@@ -5,12 +5,11 @@ using UnityEngine;
 public class BasePanel : MonoBehaviour
 {
     protected GameController controller;
-    public GameController Controller{
-        get{return controller;}
-    }
+    
+    protected UIPanelType panelType = UIPanelType.None;
 
     public virtual void Awake() {
         controller = GameController.instance;
     }
-   
+  
 }

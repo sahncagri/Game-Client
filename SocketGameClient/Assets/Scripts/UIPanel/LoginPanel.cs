@@ -8,6 +8,12 @@ public class LoginPanel : BasePanel
     [SerializeField] private InputField usernameInput;
     [SerializeField] private InputField passwordInput;
     [SerializeField] private LoginRequest loginRequest;
+
+    public override void Awake()
+    {
+        panelType = UIPanelType.LoginPanel;
+        base.Awake();
+    }
     public void OnClick()
     {
         string username = usernameInput.text;
@@ -16,4 +22,5 @@ public class LoginPanel : BasePanel
         loginRequest.SendRequest(username, passWord);
 
     }
+
 }

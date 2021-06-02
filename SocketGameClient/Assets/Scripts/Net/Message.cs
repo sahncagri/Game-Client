@@ -1,8 +1,6 @@
 using System;
 using System.Linq;
 using System.Text;
-using Common;
-
 public class Message {
    private byte[] data = new byte[1024];
     private int startIndex = 0;

@@ -1,4 +1,3 @@
-using Common;
 using UnityEngine;
 
 public class LoginRequest:BaseRequest 
@@ -18,7 +17,7 @@ public class LoginRequest:BaseRequest
     public override void OnResponse(string data)
     {
         base.OnResponse(data);
-        Debug.Log(data);
-        // TODO buraya return code gelecek 
+        Debug.Log(data+"Giris Basarili");
+        gamecontroller.GetUIPanel(UIPanelType.LobbyPanel);
     }
 }

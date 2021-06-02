@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Common;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    private PlayerManager playerManager;
-    private CameraManager cameraManager;
-    private ClientManager clientManager;
-    private AudioManager audioManager;
-    private RequestManager requestManager;
+    public PlayerManager playerManager;
+    public CameraManager cameraManager;
+    public ClientManager clientManager;
+    public AudioManager audioManager;
+    public RequestManager requestManager;
+    public UIManager uIManager;
 
     private void Awake() {
         if(instance == null) instance = this;
@@ -28,12 +28,14 @@ public class GameController : MonoBehaviour
         clientManager = new ClientManager(this);
         audioManager = new AudioManager(this);
         requestManager = new RequestManager(this);
+        uIManager = new UIManager(this);
 
         playerManager.OnInit();
         cameraManager.OnInit();
         clientManager.OnInit();
         audioManager.OnInit();
         requestManager.OnInit();
+        uIManager.OnInit();
     }
 
     private void Update() {
@@ -42,6 +44,12 @@ public class GameController : MonoBehaviour
         clientManager.Update();
         audioManager.Update();
         requestManager.Update();
+        uIManager.Update();
+    }
+ 
+    public void GetUIPanel(UIPanelType panelType)
+    {
+        uIManager.TogglePanel(panelType);
     }
 
     public void AddRequest(ActionCode actionCode, BaseRequest request){
@@ -55,4 +63,5 @@ public class GameController : MonoBehaviour
     {
         requestManager.HandleResponse(actionCode,data);
     }
+
 }
